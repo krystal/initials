@@ -20,12 +20,18 @@ class Initials
         color = DEC_COLORS[Zlib.crc32(match[2]) % DEC_COLORS.size]
       end
 
+      if request.params['offset']
+        offset = request.params['offset'].to_i
+      else
+        offset = 20
+      end
+
       canvas = Magick::Image.new(size,size) do
         self.background_color = Magick::Pixel.new(*color)
       end
 
       text = Magick::Draw.new
-      text.annotate(canvas, 0, 0, 0, -(size / 60), initials) do
+      text.annotate(canvas, 0, 0, 0, (size / offset), initials) do
         text.gravity = Magick::CenterGravity
         self.font = "aTechSansRegular.ttf"
         self.pointsize = size / 2
