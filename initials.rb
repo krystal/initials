@@ -25,7 +25,7 @@ class Initials
       end
 
       text = Magick::Draw.new
-      text.annotate(canvas, 0,0,0,size / 20, initials) do
+      text.annotate(canvas, 0, 0, 0, -(size / 60), initials) do
         text.gravity = Magick::CenterGravity
         self.font = "aTechSansRegular.ttf"
         self.pointsize = size / 2
@@ -36,11 +36,11 @@ class Initials
         self.format = "png"
       end
 
-      [200, {"conetent-type" => "image/png"}, [data]]
+      [200, {"Content-Type" => "image/png"}, [data]]
     else
-      [404, {"conetent-type" => "text/plain"}, ["Invalid request"]]
+      [404, {"Content-Type" => "text/plain"}, ["Invalid request"]]
     end
   rescue
-    [500, {"conetent-type" => "text/plain"}, ["Something has gone wrong. Sorry :("]]
+    [500, {"Content-Type" => "text/plain"}, ["Something has gone wrong. Sorry :("]]
   end
 end
