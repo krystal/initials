@@ -23,7 +23,7 @@ class Initials
       if request.params['offset']
         offset = request.params['offset'].to_i
       else
-        offset = 20
+        offset = 16
       end
 
       canvas = Magick::Image.new(size,size) do
