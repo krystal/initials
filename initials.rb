@@ -25,7 +25,7 @@ class Initials
       end
 
       text = Magick::Draw.new
-      text.annotate(canvas, 0,0,0,0, initials) do
+      text.annotate(canvas, 0,0,0,size / 20, initials) do
         text.gravity = Magick::CenterGravity
         self.font = "aTechSansRegular.ttf"
         self.pointsize = size / 2
